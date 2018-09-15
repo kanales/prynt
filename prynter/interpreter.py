@@ -20,7 +20,7 @@ def get_var(s):
     
     return search.group()
 
-def run(*args, silent=False):
+def run(*args, **kwargs):
     # get all (unique) modules
     instructions = list(args)
 
@@ -33,9 +33,9 @@ def run(*args, silent=False):
 
     globs = { module:__import__(module) for module in modules } 
 
-    if not silent:
-        instructions[-1] = 'print({})'.format(instructions[-1])
+    if not kwargs.get('silent'):
+        instructions[-1] = 'print({}, end="")'.format(instructions[-1])
 
-    src = ';'.join(instructions)
+    src = '\n'.join(instructions)
     cmd = compile(src,'cmd','exec')
     exec(cmd,globs)

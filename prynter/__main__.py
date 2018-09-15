@@ -54,6 +54,7 @@ def main():
     instructions = parameters.split(';')
 
     # verbose by default
+    sys.argv.clear()
     run(*instructions, **options)
 
 if __name__ == '__main__':
