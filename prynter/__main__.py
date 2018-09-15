@@ -10,20 +10,30 @@ usage: prynt [options] command
 
 OPTIONS_DICT = {
     '--silent': 'silent',
-    '-s': 'silent',
+    's': 'silent',
 
-    '-h': 'help',
+    'h': 'help',
     '--help': 'help',
 
     '--version': 'version',
-    '-v': 'version'
+    'v': 'version'
 }
 
 def get_options(args):
-    return {
-        OPTIONS_DICT.get(a,None) : True
-            for a in args
-    }
+    opts = {}
+
+    for a in args:
+        if a[0] != '-':
+            continue
+
+        if a.startswith('--'):
+            opts[OPTIONS_DICT[a]] = True
+        else:
+            # a ~ '-xyz'
+            for opt in a[1:]:
+                opts[OPTIONS_DICT[opt]] = True
+    
+    return opts
 
 def main():
     if len(sys.argv) < 2:
