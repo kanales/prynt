@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="prynter",
-    version="0.1",
+    version="0.2",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Iván Canales",
