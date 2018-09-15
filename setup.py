@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="prynter",
-    version="0.2.1",
+    version="0.2.2",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Iván Canales",
@@ -19,8 +19,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     entry_points={
-        'console_scripts': {
-            'prynt = prynter._internal:main'
-        }
+        'console_scripts': [
+            'prynt = prynter.__main__:main'
+        ]
     }
 )

@@ -15,4 +15,5 @@ def main():
     options = {'-v': True}
     run(*instructions, **options)
 
-main()
+if __name__ == '__main__':
+    main()
