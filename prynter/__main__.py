@@ -35,6 +35,12 @@ def get_options(args):
     
     return opts
 
+
+ESCAPINGS = {
+    r'\n': '\n',
+    r'\t': '\t',
+}
+
 def main():
     if len(sys.argv) < 2:
         print(HELP)
@@ -49,7 +55,7 @@ def main():
         print(__version__)
         return
 
-    parameters = sys.argv[-1]
+    parameters = sys.argv[-1].replace('\\t', '    ')
     # Separate command in structions
     instructions = parameters.split(';')
 
